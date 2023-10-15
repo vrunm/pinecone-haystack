@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "example-store"
+name = "pinecone_haystack"
 dynamic = ["version"]
 description = ''
 readme = "README.md"
@@ -27,6 +27,7 @@ classifiers = [
 dependencies = [
   # we distribute the preview version of Haystack 2.0 under the package "haystack-ai"
   "haystack-ai",
+  "pinecone-client",
 ]
 
 [project.urls]
@@ -35,7 +36,7 @@ Issues = "https://github.com/unknown/example-store/issues"
 Source = "https://github.com/unknown/example-store"
 
 [tool.hatch.version]
-path = "src/example_store/__about__.py"
+path = "src/pinecone_haystack/__about__.py"
 
 [tool.hatch.envs.default]
 dependencies = [
@@ -63,9 +64,10 @@ dependencies = [
   "black>=23.1.0",
   "mypy>=1.0.0",
   "ruff>=0.0.243",
+  "numpy",
 ]
 [tool.hatch.envs.lint.scripts]
-typing = "mypy --install-types --non-interactive {args:src/example_store tests}"
+typing = "mypy --install-types --non-interactive {args:src/pinecone_haystack tests}"
 style = [
   "ruff {args:.}",
   "black --check --diff {args:.}",
@@ -134,7 +136,7 @@ unfixable = [
 ]
 
 [tool.ruff.isort]
-known-first-party = ["example_store"]
+known-first-party = ["pinecone_haystack"]
 
 [tool.ruff.flake8-tidy-imports]
 ban-relative-imports = "all"
@@ -144,16 +146,17 @@ ban-relative-imports = "all"
 "tests/**/*" = ["PLR2004", "S101", "TID252"]
 
 [tool.coverage.run]
-source_pkgs = ["example_store", "tests"]
+source_pkgs = ["pinecone_haystack", "tests"]
 branch = true
 parallel = true
 omit = [
-  "src/example_store/__about__.py",
+  "src/pinecone_haystack/__about__.py",
+  "example"
 ]
 
 [tool.coverage.paths]
-example_store = ["src/example_store", "*/example-store/src/example_store"]
-tests = ["tests", "*/example-store/tests"]
+pinecone_haystack = ["src/pinecone_haystack", "*/pinecone_haystack/src/pinecone_haystack"]
+tests = ["tests", "*/pinecone_haystack/tests"]
 
 [tool.coverage.report]
 exclude_lines = [
@@ -171,6 +174,7 @@ markers = [
 
 [[tool.mypy.overrides]]
 module = [
+  "pinecone.*",
   "haystack.*",
   "pytest.*"
 ]

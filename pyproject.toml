@@ -156,7 +156,7 @@ omit = [
 
 [tool.coverage.paths]
 pinecone_haystack = ["src/pinecone_haystack", "*/pinecone_haystack/src/pinecone_haystack"]
-tests = ["tests", "*/pinecone_haystack/tests"]
+tests = ["tests"]
 
 [tool.coverage.report]
 exclude_lines = [

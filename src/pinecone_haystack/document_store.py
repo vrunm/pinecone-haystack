@@ -832,7 +832,7 @@ class PineconeDocumentStore:
         docs = self.query_by_embedding(
             query_embedding=self.dummy_query,
             filters=filters,
-            top_k=self.top_k_limit,
+            top_k=10,
             scale_score=True,
             return_embedding=True,
         )

@@ -10,7 +10,9 @@ from haystack.preview import (
     default_from_dict,
     DeserializationError,
 )
+from haystack.preview.dataclasses import Document
 from pinecone_haystack.document_store import PineconeDocumentStore
+
 
 @component
 class PineconeRetriever:

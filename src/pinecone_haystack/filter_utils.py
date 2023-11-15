@@ -2,7 +2,7 @@ import logging
 from typing import Union, List, Dict
 from abc import ABC, abstractmethod
 from collections import defaultdict
-
+from haystack.errors import FilterError
 from pinecone_haystack.errors import PineconeDocumentStoreFilterError
 
 logger = logging.getLogger(__file__)
